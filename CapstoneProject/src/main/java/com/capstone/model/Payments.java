@@ -1,6 +1,5 @@
 package com.capstone.model;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -9,23 +8,23 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-@Table(name = "users")
-public class User {
+@Table(name = "payments")
+public class Payments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String username;
+    private Long userId;
 
-    private String email;
+    private Long orderId;
 
-    private String password;
+    private BigDecimal amount;
 
-
-    private BigDecimal balance = BigDecimal.valueOf(1000);
+    private PaymentStatus status;
 
     private LocalDateTime createdAt;
+
     private LocalDateTime updatedAt;
 
     @PreUpdate
@@ -38,9 +37,5 @@ public class User {
         LocalDateTime now = LocalDateTime.now();
         this.createdAt = now;
         this.updatedAt = now;
-
-
-    }
-
 }
-
+}
